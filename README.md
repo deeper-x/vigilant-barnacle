@@ -1,15 +1,15 @@
 # vigilant-barnacle [WIP]
 
 ```bash
-  // trips-log data file
+        // trips-log data file
 	pf := "./assets/all_data.csv"
-  // Load file
+        // Load file
 	res := p.ScanDoc(pf)
   
-  // Trip states you're matching
+        // Trip states you're matching
 	a := []string{"16", "20"}
 
-  // Output
+        // Output
 	fmt.Println(p.Filter(res, a))
 
 ```
