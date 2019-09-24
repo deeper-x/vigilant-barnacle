@@ -2,7 +2,6 @@ package parser
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -19,11 +18,11 @@ type ScannerDoc interface {
 }
 
 // Filter stream data with maneuvering criteria
-func Filter(in r.Res, sc []string) []string {
+func Filter(in r.Res, sc []string) ([]string, int) {
 	ret := make([]string, 0)
 	counter := 0
 	tot := 0
-	for k, v := range in {
+	for _, v := range in {
 		// states := v.States
 		// fmt.Println(sc, v.States)
 		for _, w := range v.States {
@@ -31,7 +30,7 @@ func Filter(in r.Res, sc []string) []string {
 				if z == w {
 					counter++
 					if counter > 1 {
-						fmt.Println(k, v.ShipName)
+						ret = append(ret, v.ShipName)
 						tot++
 					}
 				}
@@ -39,13 +38,13 @@ func Filter(in r.Res, sc []string) []string {
 		}
 		counter = 0
 	}
-	fmt.Println("TOT:", tot)
-	return ret
+	//fmt.Println("TOT:", tot)
+	return ret, tot
 }
 
 // ScanDoc Read document content
-func ScanDoc() r.Res {
-	f, err := os.Open("./assets/all_data.csv")
+func ScanDoc(pf string) r.Res {
+	f, err := os.Open(pf)
 
 	if err != nil {
 		log.Fatalln(err)

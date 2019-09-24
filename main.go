@@ -1,12 +1,15 @@
 package main
 
 import (
+	"fmt"
+
 	p "github.com/deeper-x/at_roadstead_sw/parser"
 )
 
 func main() {
-	res := p.ScanDoc()
+	pf := "./assets/all_data.csv"
+	res := p.ScanDoc(pf)
 	a := []string{"16", "20"}
 
-	p.Filter(res, a)
+	fmt.Println(p.Filter(res, a))
 }
