@@ -10,8 +10,8 @@ type Res map[int]TripData
 
 // TripData contain each trip data
 type TripData struct {
-	Tot   int
-	Valid bool
+	Tot    int
+	States []string
 }
 
 // GetTripID reads record trip id
@@ -34,8 +34,7 @@ func (td TripData) GetCounter(res map[int]TripData, tripID int) int {
 	return res[tripID].Tot
 }
 
-// AddEntry add record number
-func (td TripData) AddEntry(res map[int]TripData, tripID int) {
-	obj := res[tripID]
-	obj.Tot++
+// GetStates return list with trip states
+func (td TripData) GetStates(res map[int]TripData, tripID int) []string {
+	return res[tripID].States
 }
