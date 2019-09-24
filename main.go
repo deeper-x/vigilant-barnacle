@@ -1,13 +1,12 @@
 package main
 
 import (
-	"fmt"
-
 	p "github.com/deeper-x/at_roadstead_sw/parser"
 )
 
 func main() {
 	res := p.ScanDoc()
+	a := []string{"16", "20"}
 
-	fmt.Println(res)
+	p.Filter(res, a)
 }

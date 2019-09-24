@@ -10,8 +10,9 @@ type Res map[int]TripData
 
 // TripData contain each trip data
 type TripData struct {
-	Tot    int
-	States []string
+	Tot      int
+	States   []string
+	ShipName string
 }
 
 // GetTripID reads record trip id
@@ -22,6 +23,11 @@ func (TripData) GetTripID(record []string) int {
 	}
 
 	return n
+}
+
+// GetShipName read ship name in each record
+func (TripData) GetShipName(record []string) string {
+	return record[1]
 }
 
 // GetStateID reads record state id
